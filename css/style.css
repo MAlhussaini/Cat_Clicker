@@ -10,7 +10,7 @@ body {
   width: 100%;
 }
 
-#kitten {
+img.kitten {
   display: block;
   margin: auto;
   max-width: 100%;
@@ -19,3 +19,8 @@ body {
 h1 {
     text-align: center;
 }
+/* 
+div {
+  display: none;
+}
+ */
