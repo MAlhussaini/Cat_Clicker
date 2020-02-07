@@ -26,14 +26,14 @@ for (let i = 1; i <= 5; i++) {
     newCounterElement.textContent = "00";
     newDivElement.appendChild(newCounterElement);
 
-    newImgElement.addEventListener("click", (function() {
+    newImgElement.addEventListener("click", (function(counterDomElement) {
         return function() {
         clickCounter++;
         if (clickCounter < 10) {
             clickCounter = "0" + clickCounter;
         }
-        newCounterElement.innerHTML = clickCounter;
-    }})())
+        counterDomElement.innerHTML = clickCounter;
+    }})(newCounterElement))
 
     document.body.appendChild(newDivElement);
 }
