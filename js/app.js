@@ -4,17 +4,19 @@ let totalCats = 5;
 
 
 (function creatingTheDom(totalCats, img, tag) {
+    // Create the container of the cats list
     newUnsortedList = document.createElement("ul");
 
+    // Loop for the total cats and create DOM for each one
     for (let i = 1; i <= totalCats; i++) {
         // Make a counter variable for each div cat
         let clickCounter = 0;
 
-        // Create a list of all the cats
+        // Create a list item of each cat
         newListElement = document.createElement("li");
         newListTitle = document.createElement("h3");
         newListTitle.textContent = tag + i
-        newListElement.setAttribute("id", tag+i);
+        newListElement.setAttribute("id", tag + i);
         newListElement.setAttribute("class", "catItem");
         newListElement.appendChild(newListTitle);
 
@@ -41,7 +43,7 @@ let totalCats = 5;
         newCounterElement.textContent = "00";
         newDivElement.appendChild(newCounterElement);
 
-        // Add eventListener to each cat img to add counting functionality
+        // Add counting functionality to each cat img
         newImgElement.addEventListener("click", (function (counterDomElement) {
             return function () {
                 clickCounter++;
@@ -51,37 +53,43 @@ let totalCats = 5;
                 counterDomElement.innerHTML = clickCounter;
             }
         })(newCounterElement))
-/* 
-        // !Add eventListener to each list item to show cats
-        console.log(newListElement)
-        newListElement.addEventListener("click", (function (catContainer) {
-            console.log('I am here ')
-            console.log(catContainer)
-            return function () {
-                console.log(catContainer);
-                console.log(tag + i);
-                catContainer.setAttribute("class", "unhide");
-            }
-        })(newDivElement))    
- */
-        // Append new list item to unsorted list collection
+        /* 
+                // !Add eventListener to each list item to show cats
+                console.log(newListElement)
+                newListElement.addEventListener("click", (function (catContainer) {
+                    console.log('I am here ')
+                    console.log(catContainer)
+                    return function () {
+                        console.log(catContainer);
+                        console.log(tag + i);
+                        catContainer.setAttribute("class", "unhide");
+                    }
+                })(newDivElement))    
+         */
+        // Append new cat item to unsorted list collection
         newUnsortedList.appendChild(newListElement);
 
-        // Append new cat container to the body
+        // Append the container of each cat to the end of the body
         document.body.appendChild(newDivElement);
     }
-    // document.body.appendChild(newUnsortedList);
+    // Append the list to the begging of the page
     document.body.insertAdjacentHTML('afterbegin', newUnsortedList.outerHTML);
-    
-    catsArr = document.getElementsByClassName("catItem");
-    containersArr = document.getElementsByClassName("catContainer");
 
-    for (i=0; i < totalCats; i++){
+    // Create an array that hold the cats list items
+    let catsArr = document.getElementsByClassName("catItem");
+    // Create an array that hold the cats container
+    let containersArr = document.getElementsByClassName("catContainer");
+
+    // Loop to add clicking functionality to each list item
+    for (i = 0; i < totalCats; i++) {
         catsArr[i].addEventListener("click", (function (catContainer) {
             return function () {
+                // Check for elements on screen
                 if (document.querySelector(".unhide") !== null) {
+                    // Hide the cat from the page
                     document.querySelector(".unhide").classList.remove("unhide")
                 }
+                // Show the cat to the page
                 catContainer.setAttribute("class", "unhide")
             }
         })(containersArr[i]))
