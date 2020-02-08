@@ -16,11 +16,27 @@ img.kitten {
   max-width: 100%;
 }
 
+img.kitten:hover {
+  cursor: pointer;
+}
 h1 {
     text-align: center;
 }
-/* 
+
 div {
   display: none;
+  /* float: right; */
 }
- */
+
+
+div.unhide {
+  display: block;
+}
+
+ul {
+  float: left;
+}
+
+ul:hover {
+  cursor: pointer;
+}
